@@ -1,40 +1,600 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Senhas Seguras</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UNLOCK — Password Generator</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <main class="container"> 
-    <header class="header">
-      <h1>Gerador de Senhas</h1>
-    </header>
+    <div class="noise"></div>
 
-    <section class="display-box" aria-label="Resultado da Senha">
-      <output id="password" aria-live="polite">Clique em Gerar</output>
-      <button type="button" class="copy-btn" id="copyBtn" title="Copiar para área de transferência">Copiar</button>
-    </section>
+    <main class="app">
 
-    <section class="custom-section" aria-label="Configurações da Senha">
-      <h2>Personalize sua senha</h2>
+        <!-- HEADER -->
+        <header class="topbar">
 
-      <div class="control-group"> 
-        <label for="lengthVal" class="control-label">Número de caracteres</label>
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="unlock.svg" alt="Unlock">
+                </div>
 
-        <div class="counter">
-          <button type="button" id="decrement" aria-label="Diminuir tamanho">-</button>
-          <span id="lengthVal" aria-live="polite">12</span>
-          <button type="button" id="increment" aria-label="Aumentar tamanho">+</button>
-        </div>
-      </div>
+                <div>
+                    <span class="brand-name">UNLOCK</span>
+                    <span class="brand-subtitle">PASSWORD LAB</span>
+                </div>
+            </div>
 
-      <button type="button" class="generate-btn" id="generateBtn">Gerar Nova Senha</button>
-    </section>
-  </main>
+            <div class="camera-status">
+                <span class="status-dot"></span>
+                SECURE
+            </div>
 
-  <script src="script.js"></script>
+        </header>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="eyebrow">
+                <span></span>
+                PRIVATE / LOCAL / SECURE
+            </div>
+
+            <h1>
+                Your password.<br>
+                <em>Your control.</em>
+            </h1>
+
+            <p>
+                Crie senhas fortes, aleatórias e únicas
+                em poucos segundos.
+            </p>
+
+        </section>
+
+
+        <!-- PASSWORD CARD -->
+        <section class="password-card">
+
+            <div class="card-top">
+
+                <span class="small-label">
+                    GENERATED PASSWORD
+                </span>
+
+                <span class="counter" id="characterCounter">
+                    16 CHARS
+                </span>
+
+            </div>
+
+
+            <div class="password-display">
+
+                <span id="password">
+                    K7#mP9@xQ2!vL8$z
+                </span>
+
+                <button
+                    class="icon-button"
+                    id="togglePassword"
+                    aria-label="Mostrar senha"
+                >
+                    <span id="eyeIcon">◉</span>
+                </button>
+
+            </div>
+
+
+            <div class="strength-area">
+
+                <div class="strength-header">
+                    <span>STRENGTH</span>
+                    <strong id="strengthText">STRONG</strong>
+                </div>
+
+                <div class="strength-bars">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <button class="generate-button" id="generateButton">
+
+                <span class="button-icon">✦</span>
+
+                GENERATE PASSWORD
+
+                <span class="button-arrow">↗️</span>
+
+            </button>
+
+        </section>
+
+
+        <!-- OPTIONS -->
+        <section class="options-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="small-label">CUSTOMIZE</span>
+                    <h2>Password settings</h2>
+                </div>
+
+                <span class="settings-number">01</span>
+
+            </div>
+
+
+            <!-- LENGTH -->
+            <div class="length-control">
+
+                <div class="control-title">
+
+                    <span>Password length</span>
+
+                    <strong id="lengthValue">16</strong>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="length"
+                    min="6"
+                    max="40"
+                    value="16"
+                >
+
+                <div class="range-labels">
+                    <span>06</span>
+                    <span>40</span>
+                </div>
+
+            </div>
+
+
+            <!-- CHECKBOXES -->
+            <div class="options-grid">
+
+                <label class="option">
+
+                    <input
+                        type="checkbox"
+                        id="uppercase"
+                        checked
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span class="option-text">
+                        <strong>Uppercase</strong>
+                        <small>A-Z</small>
+                    </span>
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="checkbox"
+                        id="lowercase"
+                        checked
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span class="option-text">
+                        <strong>Lowercase</strong>
+                        <small>a-z</small>
+                    </span>
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="checkbox"
+                        id="numbers"
+                        checked
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span class="option-text">
+                        <strong>Numbers</strong>
+                        <small>0-9</small>
+                    </span>
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="checkbox"
+                        id="symbols"
+                        checked
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span class="option-text">
+                        <strong>Symbols</strong>
+                        <small>#$@!</small>
+                    </span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <div class="footer-line"></div>
+
+            <div class="footer-content">
+
+                <span>UNLOCK ©️ 2026</span>
+
+                <span class="footer-center">
+                    NO DATA STORED
+                </span>
+
+                <span>
+                    <span class="footer-dot"></span>
+                    LOCAL GENERATOR
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- COPY TOAST -->
+    <div class="toast" id="toast">
+        <span>✓</span>
+        PASSWORD COPIED
+    </div>
+
+
+    <script>
+
+        const passwordElement =
+            document.getElementById("password");
+
+        const lengthSlider =
+            document.getElementById("length");
+
+        const lengthValue =
+            document.getElementById("lengthValue");
+
+        const characterCounter =
+            document.getElementById("characterCounter");
+
+        const generateButton =
+            document.getElementById("generateButton");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+        const eyeIcon =
+            document.getElementById("eyeIcon");
+
+        const strengthText =
+            document.getElementById("strengthText");
+
+        const strengthBars =
+            document.querySelectorAll(".strength-bars span");
+
+        const toast =
+            document.getElementById("toast");
+
+
+        const uppercase =
+            document.getElementById("uppercase");
+
+        const lowercase =
+            document.getElementById("lowercase");
+
+        const numbers =
+            document.getElementById("numbers");
+
+        const symbols =
+            document.getElementById("symbols");
+
+
+        let currentPassword = "";
+        let passwordVisible = true;
+
+
+        const characters = {
+
+            uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+
+            lowercase:
+                "abcdefghijklmnopqrstuvwxyz",
+
+            numbers:
+                "0123456789",
+
+            symbols:
+                "!@#$%^&*()_+-=[]{}|;:,.<>?"
+
+        };
+
+
+        function generatePassword() {
+
+            let availableCharacters = "";
+
+            if (uppercase.checked) {
+                availableCharacters += characters.uppercase;
+            }
+
+            if (lowercase.checked) {
+                availableCharacters += characters.lowercase;
+            }
+
+            if (numbers.checked) {
+                availableCharacters += characters.numbers;
+            }
+
+            if (symbols.checked) {
+                availableCharacters += characters.symbols;
+            }
+
+
+            if (availableCharacters.length === 0) {
+
+                passwordElement.textContent =
+                    "SELECT AN OPTION";
+
+                return;
+
+            }
+
+
+            const length =
+                Number(lengthSlider.value);
+
+            let password = "";
+
+
+            const array =
+                new Uint32Array(length);
+
+            window.crypto.getRandomValues(array);
+
+
+            for (let i = 0; i < length; i++) {
+
+                password +=
+                    availableCharacters[
+                        array[i] %
+                        availableCharacters.length
+                    ];
+
+            }
+
+
+            currentPassword = password;
+
+            passwordElement.textContent =
+                passwordVisible
+                    ? password
+                    : "•".repeat(length);
+
+
+            updateStrength(password);
+
+            updateCounter();
+
+        }
+
+
+        function updateCounter() {
+
+            const length =
+                Number(lengthSlider.value);
+
+            lengthValue.textContent = length;
+
+            characterCounter.textContent =
+                `${length} CHARS`;
+
+        }
+
+
+        function updateStrength(password) {
+
+            let score = 0;
+
+            if (password.length >= 10)
+                score++;
+
+            if (password.length >= 16)
+                score++;
+
+            if (/[A-Z]/.test(password))
+                score++;
+
+            if (/[0-9]/.test(password))
+                score++;
+
+            if (/[^A-Za-z0-9]/.test(password))
+                score++;
+
+
+            strengthBars.forEach(bar => {
+                bar.classList.remove(
+                    "active",
+                    "medium",
+                    "strong"
+                );
+            });
+
+
+            if (score <= 2) {
+
+                strengthText.textContent =
+                    "WEAK";
+
+                strengthBars[0]
+                    .classList.add("active");
+
+            }
+
+            else if (score <= 3) {
+
+                strengthText.textContent =
+                    "MEDIUM";
+
+                strengthBars
+                    .forEach((bar, index) => {
+
+                        if (index < 2)
+                            bar.classList.add("medium");
+
+                    });
+
+            }
+
+            else {
+
+                strengthText.textContent =
+                    "STRONG";
+
+                strengthBars
+                    .forEach(bar => {
+
+                        bar.classList.add("strong");
+
+                    });
+
+            }
+
+        }
+
+
+        function copyPassword() {
+
+            if (!currentPassword)
+                return;
+
+
+            navigator.clipboard.writeText(
+                currentPassword
+            );
+
+
+            toast.classList.add("show");
+
+
+            setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 2200);
+
+        }
+
+
+        passwordElement.addEventListener(
+            "click",
+            copyPassword
+        );
+
+
+        generateButton.addEventListener(
+            "click",
+            () => {
+
+                generateButton.classList.add(
+                    "clicked"
+                );
+
+                generatePassword();
+
+                setTimeout(() => {
+
+                    generateButton.classList.remove(
+                        "clicked"
+                    );
+
+                }, 200);
+
+            }
+        );
+
+
+        lengthSlider.addEventListener(
+            "input",
+            generatePassword
+        );
+
+
+        [
+            uppercase,
+            lowercase,
+            numbers,
+            symbols
+        ].forEach(option => {
+
+            option.addEventListener(
+                "change",
+                generatePassword
+            );
+
+        });
+
+
+        togglePassword.addEventListener(
+            "click",
+            () => {
+
+                passwordVisible =
+                    !passwordVisible;
+
+
+                passwordElement.textContent =
+                    passwordVisible
+                        ? currentPassword
+                        : "•".repeat(
+                            currentPassword.length
+                        );
+
+
+                eyeIcon.textContent =
+                    passwordVisible
+                        ? "◉"
+                        : "○";
+
+            }
+        );
+
+
+        generatePassword();
+
+    </script>
+
 </body>
 </html>
