@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 
 
 :root {
@@ -10,8 +10,8 @@
     --white: #f5f2eb;
     --muted: #858585;
 
-    --blue: #123aa0;
-    --blue-light: #a296fa;
+    --pink: #ff4f87;
+    --pink-light: #ff83a9;
 
     --border: rgba(255,255,255,0.1);
 
@@ -1058,3 +1058,5 @@ footer {
     }
 
 }
+
+
