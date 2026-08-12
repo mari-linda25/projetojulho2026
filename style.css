@@ -1,14 +1,27 @@
-/* --- Configurações Globais --- */
+/* --- Variáveis Globais --- */
+:root {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --bg-display: #0f172a;
+  --border-color: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #38bdf8;
+  --accent-hover: #0284c7;
+  --radius: 12px;
+}
+
+/* --- Resets e Base --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,27 +31,26 @@ body {
 
 /* --- Container Principal --- */
 .container {
-  background-color: #1e293b;
+  background-color: var(--bg-card);
   width: 100%;
   max-width: 420px;
-  border-radius: 16px;
+  border-radius: var(--radius);
   padding: 28px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 .header h1 {
   font-size: 1.5rem;
   text-align: center;
-  color: #38bdf8;
+  color: var(--accent-color);
   margin-bottom: 24px;
-  font-weight: 600;
 }
 
-/* --- Display da Senha --- */
+/* --- Exibição da Senha (<output>) --- */
 .display-box {
-  background-color: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 10px;
+  background-color: var(--bg-display);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
@@ -47,37 +59,37 @@ body {
 }
 
 #password {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
   font-size: 1.1rem;
-  font-family: 'Courier New', Courier, monospace;
-  letter-spacing: 1px;
-  color: #e2e8f0;
   word-break: break-all;
+  color: var(--text-primary);
 }
 
 .copy-btn {
-  background-color: #334155;
-  color: #38bdf8;
+  background-color: var(--border-color);
+  color: var(--accent-color);
   border: none;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s ease;
   margin-left: 10px;
+  flex-shrink: 0;
 }
 
 .copy-btn:hover {
-  background-color: #38bdf8;
-  color: #0f172a;
+  background-color: var(--accent-color);
+  color: var(--bg-body);
 }
 
-/* --- Seção de Personalização --- */
+/* --- Configurações / Controles --- */
 .custom-section h2 {
-  font-size: 1rem;
-  color: #94a3b8;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
   margin-bottom: 16px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
 }
 
 .control-group {
@@ -89,22 +101,22 @@ body {
 
 .control-label {
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--text-primary);
 }
 
 /* --- Contador --- */
 .counter {
   display: flex;
   align-items: center;
-  background-color: #0f172a;
+  background-color: var(--bg-display);
   border-radius: 8px;
-  border: 1px solid #334155;
+  border: 1px solid var(--border-color);
   overflow: hidden;
 }
 
 .counter button {
-  background-color: transparent;
-  color: #38bdf8;
+  background: transparent;
+  color: var(--accent-color);
   border: none;
   width: 36px;
   height: 36px;
@@ -115,16 +127,33 @@ body {
 }
 
 .counter button:hover {
-  background-color: #1e293b;
+  background-color: var(--border-color);
 }
 
 #lengthVal {
-  width: 32px;
+  width: 36px;
   text-align: center;
   font-weight: 600;
-  color: #f8fafc;
 }
 
-/* --- Botão Gerar --- */
+/* --- Botão Principal --- */
 .generate-btn {
   width: 100%;
+  background-color: var(--accent-hover);
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.generate-btn:hover {
+  filter: brightness(1.15);
+}
+
+.generate-btn:active {
+  transform: scale(0.98);
+}
