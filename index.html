@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Senhas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Senhas Seguras</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container"> 
-<div class="header">
-    <h1>Gerador de Senhas</h1>
-  </div>
+  <main class="container"> 
+    <header class="header">
+      <h1>Gerador de Senhas</h1>
+    </header>
 
-  <div class="display-box">
-<span id="password">Senha</span>
-<button class="copy-btn" id="copyBtn" title="Copiar">Copiar</button>
- </div>
+    <section class="display-box" aria-label="Resultado da Senha">
+      <output id="password" aria-live="polite">Clique em Gerar</output>
+      <button type="button" class="copy-btn" id="copyBtn" title="Copiar para área de transferência">Copiar</button>
+    </section>
 
- <div class="custom-section">
-<h2>Personalize sua senha</h2>
+    <section class="custom-section" aria-label="Configurações da Senha">
+      <h2>Personalize sua senha</h2>
 
-<div class="control-group"> 
-<span class="control-label">Número de caracteres</span>
+      <div class="control-group"> 
+        <label for="lengthVal" class="control-label">Número de caracteres</label>
 
-<div class="counter">
-    <button id="decrement">-</button>
-    <span id="lengthVal">12</span>
-    <button id="increment">+</button>
-</div>
-</div>
+        <div class="counter">
+          <button type="button" id="decrement" aria-label="Diminuir tamanho">-</button>
+          <span id="lengthVal" aria-live="polite">12</span>
+          <button type="button" id="increment" aria-label="Aumentar tamanho">+</button>
+        </div>
+      </div>
 
-<button class="generate-btn" id="generate-Btn">Gerar Nova Senha</button>
- </div>
-  </div>
+      <button type="button" class="generate-btn" id="generateBtn">Gerar Nova Senha</button>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
